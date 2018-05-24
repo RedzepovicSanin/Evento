@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { CreateEventComponent } from './events/events-list/create-event.component';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { Error404Component } from './errors/404.component';
 
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
@@ -15,6 +16,7 @@ import { EventListResolverService } from './events/events-list/event-list-resolv
       { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
       { path: 'events', component: EventsListComponent, resolve: {events: EventListResolverService}},
       { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
+      { path: 'events/session/new', component: CreateSessionComponent},
       { path: '404', component: Error404Component},
       { path: '', redirectTo: 'events', pathMatch: 'full'},
 
