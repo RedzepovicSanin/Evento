@@ -13,14 +13,14 @@ export class LoginComponent {
     mouseoverLogin;
 
     constructor(private authService: AuthService, private router: Router) {
-
     }
 
+    // method for logging user in
     login(formValues) {
         this.authService.loginUser(formValues.username, formValues.password);
         this.router.navigate(['/events']);
     }
-
+    // rerouting user after clicking cancel
     cancel() {
         this.router.navigate(['/events']);
     }

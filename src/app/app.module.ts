@@ -1,8 +1,9 @@
+// modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-router.component';
-
+// components
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventThumbnailComponent } from './events/events-list/event-thumbnail.component';
@@ -13,12 +14,14 @@ import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
-
+// services
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolverService } from './events/events-list/event-list-resolver.service';
 import { AuthService } from './user/auth.service';
+// pipes
+import { DurationPipe } from './events/shared/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { AuthService } from './user/auth.service';
     SessionListComponent,
     NavBarComponent,
     Error404Component,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { AuthService } from './user/auth.service';
 
 export class AppModule { }
 
+// function for unsaved forms and canceling them
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
     return window.confirm('You haven\'t saved this event, do you really want to cancel?');

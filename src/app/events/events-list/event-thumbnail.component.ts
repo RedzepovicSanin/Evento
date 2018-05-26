@@ -17,6 +17,7 @@ export class EventThumbnailComponent {
 
     @Input() event: IEvent;
 
+    // adding classes through component
     getStartTimeClass() {
         if (this.event && this.event.time === '8:00 am') {
         return ['green', 'bold'];

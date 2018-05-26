@@ -20,7 +20,7 @@ export class EventsListComponent implements OnInit {
   ngOnInit() {
     this.events = this.route.snapshot.data['events']; // used for getting data through resolve service
   }
-
+  // simple usage of toastr
   handleThumbnailClick(eventName) {
     this.toastrService.success(eventName);
   }

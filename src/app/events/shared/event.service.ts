@@ -332,9 +332,10 @@ export class EventService {
     return this.events.find(event => event.id === id);
   }
 
-  // saving our new event
+  // saving our new event and adding new id to it
   saveEvent(event) {
-    event.id = 99;
+    const nextId = Math.max.apply(null, this.events.map(e => e.id));
+    event.id = nextId + 1;
     event.session = [];
     this.events.push(event);
   }

@@ -10,7 +10,7 @@ export class EventRouteActivator implements CanActivate {
     constructor(private eventService: EventService,
                 private router: Router) {
     }
-
+    // if ID of event doesn't exist, navigate to 404 page
     canActivate(route: ActivatedRouteSnapshot) {
         const eventExists = !!this.eventService.getEvent(+route.params['id']);
 
