@@ -320,19 +320,28 @@ export class EventService {
     }
   ];
 
+  // getting all events
   getEvents(): Observable<IEvent[]> {
     const subject = new Subject<IEvent[]>();    // creating observable
     setTimeout(() => {  subject.next(this.events); subject.complete(); }, 100);  // putting data in observable after 100ms
     return subject;  // returning observable as set of data previously taken
   }
 
+  // getting specific event
   getEvent(id: number): IEvent {
     return this.events.find(event => event.id === id);
   }
 
+  // saving our new event
   saveEvent(event) {
     event.id = 99;
     event.session = [];
     this.events.push(event);
+  }
+
+  // updating our existing event
+  updateEvent(event) {
+      const index = this.events.findIndex(x => x.id = event.id);
+      this.events[index] = event;
   }
 }

@@ -8,15 +8,17 @@ import { EventsListComponent } from './events/events-list/events-list.component'
 import { EventThumbnailComponent } from './events/events-list/event-thumbnail.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { CreateEventComponent } from './events/events-list/create-event.component';
+import { SessionListComponent } from './events/event-details/session-list.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolverService } from './events/events-list/event-list-resolver.service';
 import { AuthService } from './user/auth.service';
-import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     EventDetailsComponent,
     CreateEventComponent,
     CreateSessionComponent,
+    SessionListComponent,
     NavBarComponent,
-    Error404Component
+    Error404Component,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
 
 export function checkDirtyState(component: CreateEventComponent) {
