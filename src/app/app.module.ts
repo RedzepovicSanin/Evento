@@ -16,12 +16,15 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 // services
 import { EventService } from './events/shared/event.service';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, IToastr } from './common/toastr.service';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolverService } from './events/events-list/event-list-resolver.service';
 import { AuthService } from './user/auth.service';
 // pipes
 import { DurationPipe } from './events/shared/duration.pipe';
+
+// third party variables for dependency injection
+declare let toastr: IToastr;
 
 @NgModule({
   declarations: [
@@ -45,10 +48,10 @@ import { DurationPipe } from './events/shared/duration.pipe';
   ],
   providers: [
     EventService,
-    ToastrService,
     EventRouteActivator,
     EventListResolverService,
     AuthService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
   ],
   bootstrap: [AppComponent]
