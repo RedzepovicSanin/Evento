@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { IEvent } from './event.model';
+import { IEvent, ISession } from './event.model';
 
 @Injectable()
 
@@ -326,12 +326,10 @@ export class EventService {
     setTimeout(() => {  subject.next(this.events); subject.complete(); }, 100);  // putting data in observable after 100ms
     return subject;  // returning observable as set of data previously taken
   }
-
   // getting specific event
   getEvent(id: number): IEvent {
     return this.events.find(event => event.id === id);
   }
-
   // saving our new event and adding new id to it
   saveEvent(event) {
     const nextId = Math.max.apply(null, this.events.map(e => e.id));
@@ -339,10 +337,30 @@ export class EventService {
     event.session = [];
     this.events.push(event);
   }
-
   // updating our existing event
   updateEvent(event) {
       const index = this.events.findIndex(x => x.id = event.id);
       this.events[index] = event;
+  }
+  // giving back results of searched term
+  searchSessions(searchTerm: string) {
+    const term = searchTerm.toLocaleLowerCase();
+    let results: ISession[] = [];
+
+    this.events.forEach(event => {
+      let matchingSessions = event.sessions.filter(
+        session => session.name.toLocaleLowerCase().indexOf(term) > -1);
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = event.id;
+        return session;
+      });
+      results = results.concat(matchingSessions);
+    });
+
+    const emitter = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
   }
 }
