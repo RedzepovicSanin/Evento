@@ -23,8 +23,7 @@ export class NavBarComponent {
     }
     // method for subscribing on eventService to search form
     searchSessions(searchTerm) {
-        this.eventService.searchSessions(searchTerm).subscribe(
-            sessions => {
+        this.eventService.searchSessions(searchTerm).subscribe(sessions => {
                 this.foundSessions = sessions;
             });
     }

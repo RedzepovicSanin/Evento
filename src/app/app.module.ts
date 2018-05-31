@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-router.component';
+import { HttpClientModule } from '@angular/common/http';
 // components
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
@@ -18,13 +19,12 @@ import { SimpleModalComponent } from './common/simple-modal.component';
 import { UpvoteComponent } from './events/event-details/upvote.component';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { LocationValidator } from './events/events-list/location-validator.directive';
-
 // services
 import { EventService } from './events/shared/event.service';
 import { TOASTR_TOKEN, IToastr } from './common/toastr.service';
 import { JQ_TOKEN } from './common/jquery.service';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolverService } from './events/events-list/event-list-resolver.service';
+import { EventResolverService } from './events/events-list/event-resolver.service';
 import { AuthService } from './user/auth.service';
 import { VoterService } from './events/event-details/voter.service';
 // pipes
@@ -56,12 +56,13 @@ const jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     EventService,
-    EventRouteActivator,
     EventListResolverService,
+    EventResolverService,
     AuthService,
     VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr },
