@@ -17,8 +17,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li >
-              <a href="">Angular</a>
+            <li *ngFor="let event of events">
+              <a href="" [routerLink]="['/events', event.id]">{{ event.name | uppercase }}</a>
             </li>
           </ul>
         </li>
@@ -50,6 +50,6 @@
 <app-simple-modal closeOnBodyClick="true" elementId="searchResults" title="Matching Sessions">
   <div class="list-group">
     <a class="list-group-item" *ngFor="let session of foundSessions" 
-      [routerLink]="['/events', session.eventId]">{{session.name}}</a>
+      [routerLink]="['/events', session.eventId]">{{ session.name }} ())</a>
   </div>
 </app-simple-modal>

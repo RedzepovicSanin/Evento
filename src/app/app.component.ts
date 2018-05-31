@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './user/auth.service';
+import { IEvent } from './events/shared/event.model';
 
 @Component({
   selector: 'app-root',

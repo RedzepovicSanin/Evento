@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IEvent } from '../shared/event.model';
 
 @Component({
@@ -14,7 +14,6 @@ import { IEvent } from '../shared/event.model';
 })
 
 export class EventThumbnailComponent {
-
     @Input() event: IEvent;
 
     // adding classes through component
