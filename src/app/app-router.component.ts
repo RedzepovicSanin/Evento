@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
@@ -22,6 +22,8 @@ import { EventResolverService } from './events/events-list/event-resolver.servic
 
       { path: 'user', loadChildren: './user/user.module#UserModule' } // lazy loading this module
     ])
+    // { preloadingStrategy: PreloadAllModules } adding this could improve production environment because it loads
+    //                                           all modules when application is started
   ],
   declarations: [],
   providers: [],
