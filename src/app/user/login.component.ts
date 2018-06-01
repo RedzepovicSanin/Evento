@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-    username;
+    userName;
     password;
     mouseoverLogin;
     loginInvalid = false;
@@ -18,7 +18,7 @@ export class LoginComponent {
 
     // method for logging user in
     login(formValues) {
-        this.authService.loginUser(formValues.username, formValues.password)
+        this.authService.loginUser(formValues.userName, formValues.password)
                         .subscribe(response => {
                             if (!response) {
                                 this.loginInvalid = true;
